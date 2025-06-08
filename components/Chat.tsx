@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useState, useEffect } from "react";
 import { ModelCombobox } from "@/components/ui/model-combobox";
+import { UserButton } from "@clerk/clerk-react";
 
 interface AIModel {
   value: string;
@@ -93,11 +94,14 @@ export function Chat() {
         {isLoadingModels ? (
           <div className="h-10 w-[200px] bg-gray-200 dark:bg-gray-700 animate-pulse rounded-lg" />
         ) : (
-          <ModelCombobox
-            value={selectedModel}
-            onValueChange={setSelectedModel}
-            models={models}
-          />
+          <>
+            <ModelCombobox
+              value={selectedModel}
+              onValueChange={setSelectedModel}
+              models={models}
+            />
+            <UserButton />
+          </>
         )}
       </div>
       <div className="flex-1 overflow-y-auto mb-4 space-y-4">
