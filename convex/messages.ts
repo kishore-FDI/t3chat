@@ -6,6 +6,7 @@ export const send = mutation({
     text: v.string(),
     userId: v.string(),
     userName: v.string(),
+    isAI: v.boolean(),
   },
   handler: async (ctx, args) => {
     const messageId = await ctx.db.insert("messages", {
@@ -13,6 +14,7 @@ export const send = mutation({
       userId: args.userId,
       userName: args.userName,
       createdAt: Date.now(),
+      isAI: args.isAI,
     });
     return messageId;
   },

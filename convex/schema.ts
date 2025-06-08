@@ -7,6 +7,7 @@ export default defineSchema({
     userId: v.string(),
     userName: v.string(),
     createdAt: v.number(),
+    isAI: v.boolean(),
   }),
   users: defineTable({
     name: v.string(),
